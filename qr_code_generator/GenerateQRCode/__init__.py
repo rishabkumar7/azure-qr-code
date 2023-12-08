@@ -4,7 +4,7 @@ import uuid
 import qrcode
 import base64
 import logging
-from azure.storage.blob import BlobClient
+from azure.storage.blob import BlobServiceClient
 import azure.functions as func
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -35,11 +35,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         img_base64 = base64.b64encode(img_byte_arr).decode('utf-8')
 
         # Upload the QR code to Azure Blob Storage
-        connection_string = os.environ['AzureWebJobsStorage']
-        container_name = os.environ.get('BLOB_CONTAINER_NAME', 'qrcodes')
+        connection_string = os.environ['StorageConnection']
+        container_name = os.environ.get('BLOB_CONTAINER_NAME', 'qr-codes')
         blob_name = str(url) + '.png'
 
-        blob_client = BlobClient.from_connection_string(connection_string, container_name, blob_name)
+        blob_client = BlobServiceClient.from_connection_string(conn_str=connection_string,container_name=container_name)
         blob_client.upload_blob(img_byte_arr)
 
         # Return the QR code image and URL
