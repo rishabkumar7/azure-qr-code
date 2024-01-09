@@ -4,6 +4,8 @@
 
 This repository contains the code for serverless Azure Function that generates QR codes for provided URLs and stores them in Azure Blob Storage. The function is written in JavaScript and can be triggered via HTTP requests.
 
+![Azure QR Code Generator Architecture](./assets/azure-qr-code-architecture.png)
+
 ## Features
 
 -   **Serverless**: Leverages Azure Functions for minimal infrastructure management.
