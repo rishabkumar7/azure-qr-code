@@ -24,7 +24,9 @@ module.exports = async function (context, req) {
         const containerClient = blobServiceClient.getContainerClient(containerName);
         await containerClient.createIfNotExists({ access: 'blob' });
 
-        const blobName = url + '.png';
+        // Using regex to remove 'https://' from the URL
+        const modifiedUrl = url.replace(/^https?:\/\//, '');
+        const blobName = modifiedUrl + '.png';
         const blockBlobClient = containerClient.getBlockBlobClient(blobName);
 
         const matches = qrCodeData.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
