@@ -35,8 +35,11 @@ module.exports = async function (context, req) {
         await blockBlobClient.upload(buffer, buffer.length);
 
         context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: `QR Code generated and stored: ${blockBlobClient.url}`
+            status: 200,
+            body: { qr_code_url: blockBlobClient.url },
+            headers: {
+                'Content-Type': 'application/json'
+            }
         };
     } catch (error) {
         context.res = {
