@@ -11,7 +11,7 @@ Send a `GET` request to the Azure Function `https://azure-qr-code.azurewebsites.
 `curl` example:
 
 ``` bash
-curl -X GET https://<YOUR_FUNCTION_URL>/api/GenerateQRCode -H "Content-Type: application/json" -d '{"url":"https://www.example.com"}'
+curl -X GET https://azure-qr-code.azurewebsites.net/api/GenerateQRCode -H "Content-Type: application/json" -d '{"url":"https://www.example.com"}'
 ```
 
 Postman example:
