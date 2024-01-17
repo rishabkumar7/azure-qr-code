@@ -4,6 +4,21 @@
 
 This repository contains the code for serverless Azure Function that generates QR codes for provided URLs and stores them in Azure Blob Storage. The function is written in JavaScript and can be triggered via HTTP requests.
 
+## Demo
+
+Send a `GET` request to the Azure Function `https://azure-qr-code.azurewebsites.net/api/GenerateQRCode` with `url` as parameter.
+
+`curl` example:
+
+``` bash
+curl -X GET https://<YOUR_FUNCTION_URL>/api/GenerateQRCode -H "Content-Type: application/json" -d '{"url":"https://www.example.com"}'
+```
+
+Postman example:
+![Azure QR Code Generator GIF Postman Example](./assets/azure-qr-code.gif)
+
+## Architecture
+
 ![Azure QR Code Generator Architecture](./assets/azure-qr-code-architecture.png)
 
 ## Features
