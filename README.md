@@ -57,7 +57,7 @@ Set up your `local.settings.json` file with the necessary configuration values:
 {
     "IsEncrypted": false,
     "Values": {
-        "AzureWebJobsStorage": "",
+        "AzureWebJobsStorage": "<YOUR_STORAGE_CONNECTION_STRING>",
         "FUNCTIONS_WORKER_RUNTIME": "node",
 	      "STORAGE_CONNECTION_STRING":"<YOUR_STORAGE_CONNECTION_STRING>"
     }
@@ -78,6 +78,12 @@ Deploy your function app to Azure using the following command:
 
 ```bash
 func azure functionapp publish <YOUR_FUNCTION_APP_NAME>
+```
+
+Publish your local settings including the storage account key to Azure
+
+```bash
+func azure functionapp publish <YOUR_FUNCTION_APP_NAME> --publish-settings-only
 ```
 
 ## Usage
